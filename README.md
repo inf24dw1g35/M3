@@ -1,5 +1,5 @@
 
-![UMAIA|Logo](/docs/umaia.png)
+![UMAIA|Logo](/Docs/umaia.png)
 
 # **Desenvolvimento Web 1**
 ## Apresentação do projeto
