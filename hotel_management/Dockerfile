@@ -1,28 +1,39 @@
-# Check out https://hub.docker.com/_/node to select a new base image
-FROM docker.io/library/node:18-slim
+# filepath: /c:/Users/alope/OneDrive - Frotcom Lusitana, Lda/Ambiente de Trabalho/M3_DW1/M3/hotel_management/Dockerfile
+# Use a base image oficial do Node.js
+FROM node:18-slim
 
-# Set to a non-root built-in user `node`
+# Defina um usuário não-root
 USER node
 
-# Create app directory (with user `node`)
+# Crie o diretório da aplicação com o usuário `node`
 RUN mkdir -p /home/node/app
 
 WORKDIR /home/node/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
+# Copie os arquivos de dependências
 COPY --chown=node package*.json ./
 
+# Instale as dependências
 RUN npm install
 
-# Bundle app source code
+# Copie o código-fonte da aplicação
 COPY --chown=node . .
 
+# Copie o script wait-for-it.sh
+COPY --chown=node wait-for-it.sh /home/node/app/wait-for-it.sh
+
+# Torne o script executável
+RUN chmod +x /home/node/app/wait-for-it.sh
+
+# Compile a aplicação (se necessário)
 RUN npm run build
 
-# Bind to all network interfaces so that it can be mapped to the host OS
-ENV HOST=0.0.0.0 PORT=3000
+# Defina as variáveis de ambiente
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
-EXPOSE ${PORT}
-CMD [ "node", "." ]
+# Exponha a porta da aplicação
+EXPOSE 3000
+
+# Comando para iniciar a aplicação
+CMD ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]

@@ -5,12 +5,12 @@ services:
     image: mysql:8.0
     container_name: m3_mysql-hotel
     ports:
-      - "3307:3306"  
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_DATABASE: hotel
     volumes:
-      - ./init-db:/docker-entrypoint-initdb.d 
+      - ./init-db:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -19,24 +19,23 @@ services:
       timeout: 10s
 
   node:
-    image: node:18
+    image: node:18-slim
     container_name: m3_node-app
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
       mysql:
-        condition: service_healthy  
-    command: sh -c "/wait-for-it.sh mysql:3306 -- npm start"  
+        condition: service_healthy
+    command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
     ports:
-      - "8080:8080" 
-    working_dir: /node
+      - "3000:3000"
+    working_dir: /home/node/app
     volumes:
-      - ./:/node
+      - .:/home/node/app
     environment:
-      MYSQL_HOST: mysql  
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: hotel
       MYSQL_USER: root
       MYSQL_PASSWORD: 12345678
-      MYSQL_DB: hotel
-      MYSQL_PORT: 3306  
-
