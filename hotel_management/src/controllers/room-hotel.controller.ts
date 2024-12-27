@@ -12,7 +12,7 @@ import {
 } from '../models';
 import {RoomRepository} from '../repositories';
 
-export class RoomHotelController {
+export class Rooms_Hotel {
   constructor(
     @repository(RoomRepository)
     public roomRepository: RoomRepository,

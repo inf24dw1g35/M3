@@ -21,7 +21,7 @@ import {
 } from '../models';
 import {HotelRepository} from '../repositories';
 
-export class HotelRoomController {
+export class Hotel_Rooms {
   constructor(
     @repository(HotelRepository) protected hotelRepository: HotelRepository,
   ) { }

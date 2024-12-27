@@ -20,7 +20,7 @@ import {
 import {Guest} from '../models';
 import {GuestRepository} from '../repositories';
 
-export class GuestController {
+export class Guests {
   constructor(
     @repository(GuestRepository)
     public guestRepository : GuestRepository,
