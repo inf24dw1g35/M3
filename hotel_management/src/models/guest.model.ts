@@ -1,8 +1,7 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
-import {Room} from './room.model';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
-export class Hotel extends Entity {
+export class Guest extends Entity {
   @property({
     type: 'number',
     id: true,
@@ -17,10 +16,15 @@ export class Hotel extends Entity {
   name: string;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  stars: number;
+  id_card: string;
+
+  @property({
+    type: 'string',
+  })
+  phone?: string;
 
   @property({
     type: 'string',
@@ -32,24 +36,16 @@ export class Hotel extends Entity {
     type: 'string',
     required: true,
   })
-  city: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
   country: string;
 
-  @hasMany(() => Room)
-  rooms: Room[];
 
-  constructor(data?: Partial<Hotel>) {
+  constructor(data?: Partial<Guest>) {
     super(data);
   }
 }
 
-export interface HotelRelations {
+export interface GuestRelations {
   // describe navigational properties here
 }
 
-export type HotelWithRelations = Hotel & HotelRelations;
+export type GuestWithRelations = Guest & GuestRelations;
