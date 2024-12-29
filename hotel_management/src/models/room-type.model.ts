@@ -1,7 +1,8 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Room} from './room.model';
 
-@model()
+
+@model({settings: {mysql: {table: 'room_type'}}})
 export class RoomType extends Entity {
   @property({
     type: 'number',
