@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mysql:
     image: mysql:8.0
@@ -19,7 +17,7 @@ services:
       timeout: 10s
 
   node:
-    image: node:18-slim
+    image: node:18
     container_name: m3_node-app
     build:
       context: .
@@ -39,3 +37,16 @@ services:
       MYSQL_DATABASE: hotel
       MYSQL_USER: root
       MYSQL_PASSWORD: 12345678
+
+  react-admin:
+    image: node:18
+    container_name: m3_react-admin
+    build:
+      context: ./react-admin
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    working_dir: /app
+    volumes:
+      - ./react-admin:/app
+    command: ["npm", "start"]

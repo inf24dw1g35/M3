@@ -1,6 +1,4 @@
-# filepath: /c:/Users/alope/OneDrive - Frotcom Lusitana, Lda/Ambiente de Trabalho/M3_DW1/M3/hotel_management/Dockerfile
-# Use a base image oficial do Node.js
-FROM node:18-slim
+FROM node:18
 
 # Defina um usuário não-root
 USER node

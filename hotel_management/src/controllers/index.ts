@@ -1,4 +1,3 @@
-export * from './ping.controller';
 export * from './hotel.controller';
 export * from './guest.controller';
 export * from './room-type.controller';
