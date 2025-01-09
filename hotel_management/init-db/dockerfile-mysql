@@ -1,0 +1,15 @@
+# Baseado na imagem oficial do MySQL 8.0
+FROM mysql:8.0
+
+# Define variáveis de ambiente padrão
+ENV MYSQL_ROOT_PASSWORD=12345678
+ENV MYSQL_DATABASE=hotel
+
+# Copia os arquivos SQL para o diretório de inicialização do MySQL
+COPY ./ /docker-entrypoint-initdb.d/
+
+# Expõe a porta padrão do MySQL
+EXPOSE 3306
+
+# Usa o comando padrão para inicializar o MySQL
+CMD ["mysqld"]
