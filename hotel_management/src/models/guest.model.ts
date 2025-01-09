@@ -1,7 +1,6 @@
 import {Entity, model, property} from '@loopback/repository';
 
-
-@model({settings: {mysql: {table: 'guest'}}})
+@model()
 export class Guest extends Entity {
   @property({
     type: 'number',
@@ -24,8 +23,9 @@ export class Guest extends Entity {
 
   @property({
     type: 'string',
+    required: true,
   })
-  phone?: string;
+  phone: string;
 
   @property({
     type: 'string',

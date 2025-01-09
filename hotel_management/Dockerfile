@@ -17,12 +17,6 @@ RUN npm install
 # Copie o código-fonte da aplicação
 COPY --chown=node . .
 
-# Copie o script wait-for-it.sh
-COPY --chown=node wait-for-it.sh /home/node/app/wait-for-it.sh
-
-# Torne o script executável
-RUN chmod +x /home/node/app/wait-for-it.sh
-
 # Compile a aplicação (se necessário)
 RUN npm run build
 
@@ -34,4 +28,5 @@ ENV PORT=3000
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
+CMD ["npm", "start"]
+

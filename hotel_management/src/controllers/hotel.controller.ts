@@ -20,7 +20,7 @@ import {
 import {Hotel} from '../models';
 import {HotelRepository} from '../repositories';
 
-export class Hotels {
+export class HotelController {
   constructor(
     @repository(HotelRepository)
     public hotelRepository : HotelRepository,

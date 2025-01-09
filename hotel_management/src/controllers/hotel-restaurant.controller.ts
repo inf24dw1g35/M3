@@ -17,22 +17,22 @@ import {
 } from '@loopback/rest';
 import {
   Hotel,
-  Room,
+  Restaurant,
 } from '../models';
 import {HotelRepository} from '../repositories';
 
-export class HotelRoomController {
+export class HotelRestaurantController {
   constructor(
     @repository(HotelRepository) protected hotelRepository: HotelRepository,
   ) { }
 
-  @get('/hotels/{id}/rooms', {
+  @get('/hotels/{id}/restaurants', {
     responses: {
       '200': {
-        description: 'Array of Hotel has many Room',
+        description: 'Array of Hotel has many Restaurant',
         content: {
           'application/json': {
-            schema: {type: 'array', items: getModelSchemaRef(Room)},
+            schema: {type: 'array', items: getModelSchemaRef(Restaurant)},
           },
         },
       },
@@ -40,16 +40,16 @@ export class HotelRoomController {
   })
   async find(
     @param.path.number('id') id: number,
-    @param.query.object('filter') filter?: Filter<Room>,
-  ): Promise<Room[]> {
-    return this.hotelRepository.rooms(id).find(filter);
+    @param.query.object('filter') filter?: Filter<Restaurant>,
+  ): Promise<Restaurant[]> {
+    return this.hotelRepository.restaurants(id).find(filter);
   }
 
-  @post('/hotels/{id}/rooms', {
+  @post('/hotels/{id}/restaurants', {
     responses: {
       '200': {
         description: 'Hotel model instance',
-        content: {'application/json': {schema: getModelSchemaRef(Room)}},
+        content: {'application/json': {schema: getModelSchemaRef(Restaurant)}},
       },
     },
   })
@@ -58,22 +58,22 @@ export class HotelRoomController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Room, {
-            title: 'NewRoomInHotel',
+          schema: getModelSchemaRef(Restaurant, {
+            title: 'NewRestaurantInHotel',
             exclude: ['id'],
             optional: ['hotelId']
           }),
         },
       },
-    }) room: Omit<Room, 'id'>,
-  ): Promise<Room> {
-    return this.hotelRepository.rooms(id).create(room);
+    }) restaurant: Omit<Restaurant, 'id'>,
+  ): Promise<Restaurant> {
+    return this.hotelRepository.restaurants(id).create(restaurant);
   }
 
-  @patch('/hotels/{id}/rooms', {
+  @patch('/hotels/{id}/restaurants', {
     responses: {
       '200': {
-        description: 'Hotel.Room PATCH success count',
+        description: 'Hotel.Restaurant PATCH success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -83,28 +83,28 @@ export class HotelRoomController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Room, {partial: true}),
+          schema: getModelSchemaRef(Restaurant, {partial: true}),
         },
       },
     })
-    room: Partial<Room>,
-    @param.query.object('where', getWhereSchemaFor(Room)) where?: Where<Room>,
+    restaurant: Partial<Restaurant>,
+    @param.query.object('where', getWhereSchemaFor(Restaurant)) where?: Where<Restaurant>,
   ): Promise<Count> {
-    return this.hotelRepository.rooms(id).patch(room, where);
+    return this.hotelRepository.restaurants(id).patch(restaurant, where);
   }
 
-  @del('/hotels/{id}/rooms', {
+  @del('/hotels/{id}/restaurants', {
     responses: {
       '200': {
-        description: 'Hotel.Room DELETE success count',
+        description: 'Hotel.Restaurant DELETE success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
   })
   async delete(
     @param.path.number('id') id: number,
-    @param.query.object('where', getWhereSchemaFor(Room)) where?: Where<Room>,
+    @param.query.object('where', getWhereSchemaFor(Restaurant)) where?: Where<Restaurant>,
   ): Promise<Count> {
-    return this.hotelRepository.rooms(id).delete(where);
+    return this.hotelRepository.restaurants(id).delete(where);
   }
 }

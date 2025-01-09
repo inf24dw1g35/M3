@@ -7,21 +7,21 @@ import {
   getModelSchemaRef,
 } from '@loopback/rest';
 import {
-  Room,
+  Restaurant,
   Hotel,
 } from '../models';
-import {RoomRepository} from '../repositories';
+import {RestaurantRepository} from '../repositories';
 
-export class RoomHotelController {
+export class RestaurantHotelController {
   constructor(
-    @repository(RoomRepository)
-    public roomRepository: RoomRepository,
+    @repository(RestaurantRepository)
+    public restaurantRepository: RestaurantRepository,
   ) { }
 
-  @get('/rooms/{id}/hotel', {
+  @get('/restaurants/{id}/hotel', {
     responses: {
       '200': {
-        description: 'Hotel belonging to Room',
+        description: 'Hotel belonging to Restaurant',
         content: {
           'application/json': {
             schema: getModelSchemaRef(Hotel),
@@ -31,8 +31,8 @@ export class RoomHotelController {
     },
   })
   async getHotel(
-    @param.path.number('id') id: typeof Room.prototype.id,
+    @param.path.number('id') id: typeof Restaurant.prototype.id,
   ): Promise<Hotel> {
-    return this.roomRepository.hotel(id);
+    return this.restaurantRepository.hotel(id);
   }
 }

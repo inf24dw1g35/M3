@@ -1,9 +1,8 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Hotel} from './hotel.model';
-import {RoomType} from './room-type.model';
 
 @model()
-export class Room extends Entity {
+export class Restaurant extends Entity {
   @property({
     type: 'number',
     id: true,
@@ -12,30 +11,33 @@ export class Room extends Entity {
   id?: number;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  number: number;
+  name: string;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
   })
-  price: number;
+  category: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  meal_type: string;
 
   @belongsTo(() => Hotel)
   hotelId: number;
 
-  @belongsTo(() => RoomType)
-  roomTypeId: number;
-
-  constructor(data?: Partial<Room>) {
+  constructor(data?: Partial<Restaurant>) {
     super(data);
   }
 }
 
-export interface RoomRelations {
+export interface RestaurantRelations {
   // describe navigational properties here
 }
 
-export type RoomWithRelations = Room & RoomRelations;
+export type RestaurantWithRelations = Restaurant & RestaurantRelations;

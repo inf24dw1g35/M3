@@ -1,7 +1,9 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Room} from './room.model';
+import {Restaurant} from './restaurant.model';
+import {Service} from './service.model';
 
-@model({settings: {mysql: {table: 'hotel'}}})
+@model()
 export class Hotel extends Entity {
   @property({
     type: 'number',
@@ -42,6 +44,12 @@ export class Hotel extends Entity {
 
   @hasMany(() => Room)
   rooms: Room[];
+
+  @hasMany(() => Restaurant)
+  restaurants: Restaurant[];
+
+  @hasMany(() => Service)
+  services: Service[];
 
   constructor(data?: Partial<Hotel>) {
     super(data);
