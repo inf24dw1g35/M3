@@ -25,7 +25,6 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    command: ["./wait-for-it.sh", "mysql:3306", "--", "npm", "start"]
     ports:
       - "3000:3000"
     working_dir: /home/node/app
@@ -42,8 +41,11 @@ services:
     image: node:18
     container_name: m3_react-admin
     build:
-      context: ./react-admin
+      context: .
       dockerfile: Dockerfile
+    depends_on:
+      mysql:
+        condition: service_healthy
     ports:
       - "3001:3000"
     working_dir: /app
