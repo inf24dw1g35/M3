@@ -39,6 +39,12 @@ services:
       MYSQL_DATABASE: hotel
       MYSQL_USER: root
       MYSQL_PASSWORD: 12345678
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 10s
+      retries: 3
+      start_period: 30s
+      timeout: 5s
 
   react-admin:
     image: node:18
@@ -47,7 +53,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      mysql:
+      node:
         condition: service_healthy
     ports:
       - "3001:3000"
