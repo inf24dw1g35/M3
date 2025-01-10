@@ -1,15 +1,16 @@
-import React from 'react';
-import { List, Datagrid, TextField, NumberField } from 'react-admin';
+import { Datagrid, List, TextField } from 'react-admin';
+import StarField from './StarField'; // Importa o componente StarField
+import FlagField from './FlagField'; // Importa o componente FlagField
 
 export const HotelList = () => (
     <List>
-        <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="name" />
-            <NumberField source="stars" />
-            <TextField source="address" />
-            <TextField source="city" />
-            <TextField source="country" />
+        <Datagrid>
+            <TextField source="id" label="ID" />
+            <TextField source="name" label="Name" />
+            <StarField source="stars" label="Stars" />
+            <TextField source="address" label="Address" />
+            <TextField source="city" label="City" />
+            <FlagField source="country" label="Country" /> {/* Usa FlagField para o campo country */}
         </Datagrid>
     </List>
 );

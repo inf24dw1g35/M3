@@ -1,6 +1,8 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({
+  name: 'regime' // Alinhe com o nome da tabela no banco
+})
 export class Regime extends Entity {
   @property({
     type: 'number',

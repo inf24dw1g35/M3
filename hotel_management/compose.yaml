@@ -4,7 +4,7 @@ services:
     container_name: m3_mysql-hotel
     build:
       context: ./init-db
-      dockerfile: Dockerfile-mysql
+      dockerfile: Dockerfile.mysql
     ports:
       - "3307:3306"
     environment:
@@ -50,8 +50,8 @@ services:
     image: node:18
     container_name: m3_react-admin
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./react-admin
+      dockerfile: Dockerfile.react
     depends_on:
       node:
         condition: service_healthy
@@ -60,4 +60,7 @@ services:
     working_dir: /app
     volumes:
       - ./react-admin:/app
+      - /app/node_modules # Evita problemas com sobrescrita de node_modules
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
     command: ["npm", "start"]

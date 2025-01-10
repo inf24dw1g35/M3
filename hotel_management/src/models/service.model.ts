@@ -1,7 +1,9 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Hotel} from './hotel.model';
 
-@model()
+@model({
+  name: 'service' // O nome da tabela no banco de dados
+})
 export class Service extends Entity {
   @property({
     type: 'number',
@@ -16,7 +18,8 @@ export class Service extends Entity {
   })
   name: string;
 
-  @belongsTo(() => Hotel)
+  // Relacionamento correto com a chave estrangeira
+  @belongsTo(() => Hotel, {name: 'hotel_id'})
   hotelId: number;
 
   constructor(data?: Partial<Service>) {

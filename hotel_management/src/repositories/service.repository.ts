@@ -13,7 +13,8 @@ export class ServiceRepository extends DefaultCrudRepository<
   public readonly hotel: BelongsToAccessor<Hotel, typeof Service.prototype.id>;
 
   constructor(
-    @inject('datasources.hotel') dataSource: HotelDataSource, @repository.getter('HotelRepository') protected hotelRepositoryGetter: Getter<HotelRepository>,
+    @inject('datasources.hotel') dataSource: HotelDataSource, 
+    @repository.getter('HotelRepository') protected hotelRepositoryGetter: Getter<HotelRepository>,
   ) {
     super(Service, dataSource);
     this.hotel = this.createBelongsToAccessorFor('hotel', hotelRepositoryGetter,);

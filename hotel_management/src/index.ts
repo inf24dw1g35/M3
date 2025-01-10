@@ -1,4 +1,6 @@
 import {ApplicationConfig, HotelManagementApplication} from './application';
+import 'dotenv/config';
+
 
 export * from './application';
 

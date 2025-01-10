@@ -3,7 +3,9 @@ import {Room} from './room.model';
 import {Restaurant} from './restaurant.model';
 import {Service} from './service.model';
 
-@model()
+@model({
+  name: 'hotel' // Alinhe com o nome da tabela no banco
+})
 export class Hotel extends Entity {
   @property({
     type: 'number',

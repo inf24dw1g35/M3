@@ -2,7 +2,9 @@ import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Hotel} from './hotel.model';
 import {RoomType} from './room-type.model';
 
-@model()
+@model({
+  name: 'room' // Alinhe com o nome da tabela no banco
+})
 export class Room extends Entity {
   @property({
     type: 'number',
@@ -23,7 +25,7 @@ export class Room extends Entity {
   })
   price: number;
 
-  @belongsTo(() => Hotel)
+  @belongsTo(() => Hotel, {name: 'hotel_id'})
   hotelId: number;
 
   @belongsTo(() => RoomType)

@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS restaurant (
 -- CriaÃ§Ã£o da tabela "servico"
 CREATE TABLE IF NOT EXISTS service (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    hotel_id INT,
+    hotel_id INT, -- A coluna hotel_id precisa existir no banco de dados
     name VARCHAR(255) NOT NULL,
     CONSTRAINT FK_service_hotel FOREIGN KEY (hotel_id) REFERENCES hotel(id)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
