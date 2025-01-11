@@ -65,3 +65,7 @@ O repositório está organizado da seguinte forma:
 
 - **mysql** - docker pull inf24dw1g32/mysql:1.0
 - **nodejs** - docker pull inf24dw1g32/node:1.0
+
+## Elementos do Grupo
+- António Manuel Ferreira Lopes dos Santos Filipe - nº 044351 @AmFilipe
+- João Pedro Freitas Gomes – nº 045235 @joaoismai
