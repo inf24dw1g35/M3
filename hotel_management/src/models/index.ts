@@ -5,3 +5,5 @@ export * from './guest.model';
 export * from './room.model';
 export * from './restaurant.model';
 export * from './service.model';
+export * from './reservation.model';
+export * from './reservation-guest.model';

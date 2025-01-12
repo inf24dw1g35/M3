@@ -5,3 +5,5 @@ export * from './restaurant.repository';
 export * from './room-type.repository';
 export * from './room.repository';
 export * from './service.repository';
+export * from './reservation-guest.repository';
+export * from './reservation.repository';

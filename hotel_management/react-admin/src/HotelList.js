@@ -1,6 +1,6 @@
 import { Datagrid, List, TextField } from 'react-admin';
-import StarField from './StarField'; // Importa o componente StarField
-import FlagField from './FlagField'; // Importa o componente FlagField
+import StarField from './StarField'; 
+import FlagField from './FlagField'; // Certifique-se de que este é o FlagField correto
 
 export const HotelList = () => (
     <List>
@@ -10,7 +10,8 @@ export const HotelList = () => (
             <StarField source="stars" label="Stars" />
             <TextField source="address" label="Address" />
             <TextField source="city" label="City" />
-            <FlagField source="country" label="Country" /> {/* Usa FlagField para o campo country */}
+            <FlagField source="country" label="Country" /> {/* Certifique-se que country é passado */}
         </Datagrid>
     </List>
 );
+

@@ -10,7 +10,10 @@
     "react-admin-lb4": "^1.0.3",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "react-world-flags": "^1.6.0",
+    "svg-country-flags": "^1.2.10",
+    "web-vitals": "^4.2.4",
+    "world-countries": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -17,7 +17,7 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       retries: 5
-      start_period: 40s
+      start_period: 60s
       timeout: 10s
 
   node:
@@ -33,6 +33,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - .:/home/node/app
+      - /home/node/app/node_modules
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
@@ -42,25 +43,9 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 10s
-      retries: 5
-      start_period: 60s
+      retries: 10
+      start_period: 120s
       timeout: 5s
     user: "node"
 
-#  react-admin:
-#    container_name: m3_react-admin
-#    build:
-#      context: ./react-admin
-#      dockerfile: Dockerfile.react
-#    depends_on:
-#      node:
-#        condition: service_healthy
-#    ports:
-#      - "3001:3000"
-#    working_dir: /app
-#    volumes:
-#      - ./react-admin:/app
-#    environment:
-#      CHOKIDAR_USEPOLLING: "true"
-#      NODE_ENV: "development"
-#    command: ["npm", "start"]
+  
