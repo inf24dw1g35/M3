@@ -43,13 +43,13 @@ CREATE TABLE IF NOT EXISTS guest (
 -- CriaÃ§Ã£o da tabela "quarto"
 CREATE TABLE IF NOT EXISTS room (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    hotel_id INT NOT NULL,
-    room_type_id INT NOT NULL,
+    hotelId INT NOT NULL,
+    roomTypeId INT NOT NULL,
     number INT NOT NULL,
     price DECIMAL(10,2) NOT NULL, 
-    CONSTRAINT FK_room_hotel FOREIGN KEY (hotel_id) REFERENCES hotel(id),
-    CONSTRAINT FK_room_type FOREIGN KEY (room_type_id) REFERENCES room_type(id),
-    CONSTRAINT UC_room UNIQUE (hotel_id, number)
+    CONSTRAINT FK_room_hotel FOREIGN KEY (hotelId) REFERENCES hotel(id),
+    CONSTRAINT FK_room_type FOREIGN KEY (roomTypeId) REFERENCES room_type(id),
+    CONSTRAINT UC_room UNIQUE (hotelId, number)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS reservation (
@@ -61,53 +61,53 @@ CREATE TABLE IF NOT EXISTS reservation (
     guest_name VARCHAR(150), 
     address VARCHAR(255) NOT NULL, 
     contact_phone VARCHAR(20) NOT NULL, 
-    guest_id INT,
-    CONSTRAINT FK_reservation_guest FOREIGN KEY (guest_id) REFERENCES guest(id)
+    guestId INT,
+    CONSTRAINT FK_reservation_guest FOREIGN KEY (guestId) REFERENCES guest(id)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS reservation_guest (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    guest_id INT,
-    reservation_id INT,
-    room_id INT,
+    guestId INT,
+    reservationId INT,
+    roomId INT,
     check_in DATE NOT NULL, 
     nights INT NOT NULL, 
-    regime_id INT,
-    CONSTRAINT FK_reservation_guest_guest FOREIGN KEY (guest_id) REFERENCES guest(id),
-    CONSTRAINT FK_reservation_guest_reservation FOREIGN KEY (reservation_id) REFERENCES reservation(id),
-    CONSTRAINT FK_reservation_guest_room FOREIGN KEY (room_id) REFERENCES room(id),
-    CONSTRAINT FK_reservation_guest_regime FOREIGN KEY (regime_id) REFERENCES regime(id)
+    regimeId INT,
+    CONSTRAINT FK_reservation_guest_guest FOREIGN KEY (guestId) REFERENCES guest(id),
+    CONSTRAINT FK_reservation_guest_reservation FOREIGN KEY (reservationId) REFERENCES reservation(id),
+    CONSTRAINT FK_reservation_guest_room FOREIGN KEY (roomId) REFERENCES room(id),
+    CONSTRAINT FK_reservation_guest_regime FOREIGN KEY (regimeId) REFERENCES regime(id)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 -- CriaÃ§Ã£o da tabela "restaurante"
 CREATE TABLE IF NOT EXISTS restaurant (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    hotel_id INT,
+    hotelId INT,
     name VARCHAR(255) NOT NULL,
     category VARCHAR(16) NOT NULL,
     meal_type VARCHAR(50) NOT NULL, 
-    CONSTRAINT FK_restaurant_hotel FOREIGN KEY (hotel_id) REFERENCES hotel(id)
+    CONSTRAINT FK_restaurant_hotel FOREIGN KEY (hotelId) REFERENCES hotel(id)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CriaÃ§Ã£o da tabela "servico"
 CREATE TABLE IF NOT EXISTS service (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    hotel_id INT, -- A coluna hotel_id precisa existir no banco de dados
+    hotelId INT, -- A coluna hotelId precisa existir no banco de dados
     name VARCHAR(255) NOT NULL,
-    CONSTRAINT FK_service_hotel FOREIGN KEY (hotel_id) REFERENCES hotel(id)
+    CONSTRAINT FK_service_hotel FOREIGN KEY (hotelId) REFERENCES hotel(id)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 CREATE TABLE IF NOT EXISTS reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    guest_id INT NOT NULL,
-    hotel_id INT NOT NULL,  
-    room_id INT NOT NULL,
-    room_type_id INT NOT NULL,  
+    guestId INT NOT NULL,
+    hotelId INT NOT NULL,  
+    roomId INT NOT NULL,
+    roomTypeId INT NOT NULL,  
     check_in DATE NOT NULL,
     nights INT NOT NULL,
-    regime_id INT NOT NULL,
+    regimeId INT NOT NULL,
     booking_method VARCHAR(20) NOT NULL,
     guest_count INT NOT NULL,
     credit_card VARCHAR(20) NOT NULL,
@@ -115,11 +115,11 @@ CREATE TABLE IF NOT EXISTS reservations (
     contact_phone VARCHAR(20) NOT NULL,
     date DATE NOT NULL,
     guest_name VARCHAR(150) NOT NULL,
-    FOREIGN KEY (guest_id) REFERENCES guest(id),
-    FOREIGN KEY (room_id) REFERENCES room(id),
-    FOREIGN KEY (hotel_id) REFERENCES hotel(id),  
-    FOREIGN KEY (room_type_id) REFERENCES room_type(id),  
-    FOREIGN KEY (regime_id) REFERENCES regime(id)
+    FOREIGN KEY (guestId) REFERENCES guest(id),
+    FOREIGN KEY (roomId) REFERENCES room(id),
+    FOREIGN KEY (hotelId) REFERENCES hotel(id),  
+    FOREIGN KEY (roomTypeId) REFERENCES room_type(id),  
+    FOREIGN KEY (regimeId) REFERENCES regime(id)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 

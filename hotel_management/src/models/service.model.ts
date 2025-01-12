@@ -19,7 +19,7 @@ export class Service extends Entity {
   name: string;
 
   // Relacionamento correto com a chave estrangeira
-  @belongsTo(() => Hotel, {name: 'hotel_id'})
+  @belongsTo(() => Hotel)
   hotelId: number;
 
   constructor(data?: Partial<Service>) {

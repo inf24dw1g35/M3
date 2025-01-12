@@ -2680,18 +2680,18 @@ VALUES (1,1,'Aluguer de salas'),
 (42,7,'Bar');
 
 INSERT INTO reservations ( 
-    id, guest_id, room_id, room_type_id, check_in, nights, regime_id, 
+    id, guestId, roomId, roomTypeId, check_in, nights, regimeId, 
     booking_method, guest_count, credit_card, address, 
-    contact_phone, date, guest_name, hotel_id
+    contact_phone, date, guest_name, hotelId
 )
 SELECT 
     r.id,
-    rg.guest_id,
-    rg.room_id,
-    rm.room_type_id,  -- Obtendo room_type_id da tabela 'room'
+    rg.guestId,
+    rg.roomId,
+    rm.roomTypeId,  -- Obtendo roomTypeId da tabela 'room'
     rg.check_in,
     rg.nights,
-    rg.regime_id,
+    rg.regimeId,
     r.booking_method,
     r.guest_count,
     r.credit_card,
@@ -2699,10 +2699,10 @@ SELECT
     r.contact_phone,
     rg.check_in AS date, -- Usando a data de check-in como data da reserva
     r.guest_name,
-    rm.hotel_id  -- Obtendo hotel_id da tabela 'room'
+    rm.hotelId  -- Obtendo hotel_id da tabela 'room'
 FROM 
     reservation r
 JOIN 
-    reservation_guest rg ON r.id = rg.reservation_id
+    reservation_guest rg ON r.id = rg.reservationId
 JOIN 
-    room rm ON rg.room_id = rm.id;  -- Adicionando a tabela 'room' para obter room_type_id e hotel_id
+    room rm ON rg.roomId = rm.id;  -- Adicionando a tabela 'room' para obter roomTypeId e hotel_id

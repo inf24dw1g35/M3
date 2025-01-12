@@ -30,7 +30,7 @@ export class Restaurant extends Entity {
   })
   meal_type: string;
 
-  @belongsTo(() => Hotel, {name: 'hotel_id'})
+  @belongsTo(() => Hotel)
   hotelId: number;
 
   constructor(data?: Partial<Restaurant>) {

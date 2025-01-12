@@ -25,7 +25,7 @@ export class Room extends Entity {
   })
   price: number;
 
-  @belongsTo(() => Hotel, {name: 'hotel_id'})
+  @belongsTo(() => Hotel)
   hotelId: number;
 
   @belongsTo(() => RoomType)

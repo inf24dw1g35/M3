@@ -1,6 +1,9 @@
 # Use uma imagem base do Node.js
 FROM node:18-alpine
 
+# Instalar dependências do sistema necessárias (opcional, mas recomendado)
+RUN apk add --no-cache bash curl
+
 # Diretório de trabalho no container
 WORKDIR /app
 

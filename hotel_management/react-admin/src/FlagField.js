@@ -1,8 +1,9 @@
 import React from 'react';
 
+// Mapeamento entre nomes de países e seus códigos ISO 3166-1 alpha-2
 const countryCodeMap = {
     Brazil: 'br',
-    United States: 'us',
+    'United States': 'us',
     Portugal: 'pt',
     Spain: 'es',
     France: 'fr',
@@ -14,18 +15,24 @@ const countryCodeMap = {
 };
 
 const FlagField = ({ source, record = {} }) => {
+    // Garante que o campo source tenha um valor
     if (!record[source]) return null;
 
-    // Obtem o código do país a partir do nome completo
-    const countryCode = countryCodeMap[record[source]];
-    if (!countryCode) return <span>{record[source]}</span>; // Exibe o nome se não houver código mapeado
+    // Obtém o código do país do mapeamento
+    const countryName = record[source];
+    const countryCode = countryCodeMap[countryName];
 
+    // Caso o código não seja encontrado, exibe apenas o nome do país
+    if (!countryCode) return <span>{countryName}</span>;
+
+    // URL da bandeira usando o código do país
     const flagUrl = `https://flagcdn.com/w40/${countryCode}.png`;
 
+    // Renderiza a imagem da bandeira
     return (
         <img
             src={flagUrl}
-            alt={`${record[source]} flag`}
+            alt={`${countryName} flag`}
             style={{ width: '24px', height: '16px' }}
         />
     );
