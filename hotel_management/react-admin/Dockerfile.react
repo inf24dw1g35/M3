@@ -13,7 +13,7 @@ COPY package*.json ./
 # Instalar as dependências
 RUN npm install
 
-# Copiar o restante do código
+# Copiar o restante do código do react-admin
 COPY . .
 
 # Expor a porta usada pelo React

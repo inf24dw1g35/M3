@@ -1,0 +1,7322 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "hotel_management",
+    "version": "0.0.1",
+    "description": "hotel management",
+    "contact": {
+      "name": "AmFilipe",
+      "email": "A044351@umaia.pt"
+    }
+  },
+  "paths": {
+    "/guests/count": {
+      "get": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "count",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Guest model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "guest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Guest>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "GuestController.count"
+      }
+    },
+    "/guests/{id}": {
+      "put": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Guest PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Guest"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "GuestController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Guest PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuestPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "GuestController.updateById"
+      },
+      "get": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "findById",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Guest model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuestWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/guest.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "GuestController.findById"
+      },
+      "delete": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Guest DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "GuestController.deleteById"
+      }
+    },
+    "/guests": {
+      "post": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "create",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Guest model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Guest"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewGuest"
+              }
+            }
+          }
+        },
+        "operationId": "GuestController.create"
+      },
+      "patch": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Guest PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "guest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Guest>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuestPartial"
+              }
+            }
+          }
+        },
+        "operationId": "GuestController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "GuestController",
+        "x-operation-name": "find",
+        "tags": [
+          "GuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Guest model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GuestWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/guest.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "GuestController.find"
+      }
+    },
+    "/hotels/count": {
+      "get": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "count",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "hotel.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Hotel>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelController.count"
+      }
+    },
+    "/hotels/{id}/restaurants": {
+      "post": {
+        "x-controller-name": "HotelRestaurantController",
+        "x-operation-name": "create",
+        "tags": [
+          "HotelRestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRestaurantInHotel"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelRestaurantController.create"
+      },
+      "patch": {
+        "x-controller-name": "HotelRestaurantController",
+        "x-operation-name": "patch",
+        "tags": [
+          "HotelRestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel.Restaurant PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "restaurant.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Restaurant>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestaurantPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelRestaurantController.patch"
+      },
+      "get": {
+        "x-controller-name": "HotelRestaurantController",
+        "x-operation-name": "find",
+        "tags": [
+          "HotelRestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Hotel has many Restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Restaurant"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelRestaurantController.find"
+      },
+      "delete": {
+        "x-controller-name": "HotelRestaurantController",
+        "x-operation-name": "delete",
+        "tags": [
+          "HotelRestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel.Restaurant DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "restaurant.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Restaurant>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelRestaurantController.delete"
+      }
+    },
+    "/hotels/{id}/rooms": {
+      "post": {
+        "x-controller-name": "HotelRoomController",
+        "x-operation-name": "create",
+        "tags": [
+          "HotelRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Room"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRoomInHotel"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelRoomController.create"
+      },
+      "patch": {
+        "x-controller-name": "HotelRoomController",
+        "x-operation-name": "patch",
+        "tags": [
+          "HotelRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel.Room PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Room>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelRoomController.patch"
+      },
+      "get": {
+        "x-controller-name": "HotelRoomController",
+        "x-operation-name": "find",
+        "tags": [
+          "HotelRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Hotel has many Room",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Room"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelRoomController.find"
+      },
+      "delete": {
+        "x-controller-name": "HotelRoomController",
+        "x-operation-name": "delete",
+        "tags": [
+          "HotelRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel.Room DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Room>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelRoomController.delete"
+      }
+    },
+    "/hotels/{id}/services": {
+      "post": {
+        "x-controller-name": "HotelServiceController",
+        "x-operation-name": "create",
+        "tags": [
+          "HotelServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewServiceInHotel"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelServiceController.create"
+      },
+      "patch": {
+        "x-controller-name": "HotelServiceController",
+        "x-operation-name": "patch",
+        "tags": [
+          "HotelServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel.Service PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "service.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Service>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelServiceController.patch"
+      },
+      "get": {
+        "x-controller-name": "HotelServiceController",
+        "x-operation-name": "find",
+        "tags": [
+          "HotelServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Hotel has many Service",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Service"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelServiceController.find"
+      },
+      "delete": {
+        "x-controller-name": "HotelServiceController",
+        "x-operation-name": "delete",
+        "tags": [
+          "HotelServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel.Service DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "service.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Service>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelServiceController.delete"
+      }
+    },
+    "/hotels/{id}": {
+      "put": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Hotel PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Hotel"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Hotel PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HotelPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "HotelController.updateById"
+      },
+      "get": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "findById",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HotelWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/hotel.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelController.findById"
+      },
+      "delete": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Hotel DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "HotelController.deleteById"
+      }
+    },
+    "/hotels": {
+      "post": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "create",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hotel"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewHotel"
+              }
+            }
+          }
+        },
+        "operationId": "HotelController.create"
+      },
+      "patch": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "hotel.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Hotel>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HotelPartial"
+              }
+            }
+          }
+        },
+        "operationId": "HotelController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "HotelController",
+        "x-operation-name": "find",
+        "tags": [
+          "HotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Hotel model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HotelWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/hotel.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "HotelController.find"
+      }
+    },
+    "/regimes/count": {
+      "get": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "count",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regime model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "regime.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Regime>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RegimeController.count"
+      }
+    },
+    "/regimes/{id}": {
+      "put": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Regime PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Regime"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RegimeController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Regime PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegimePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RegimeController.updateById"
+      },
+      "get": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "findById",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regime model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegimeWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/regime.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RegimeController.findById"
+      },
+      "delete": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Regime DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RegimeController.deleteById"
+      }
+    },
+    "/regimes": {
+      "post": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "create",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regime model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Regime"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRegime"
+              }
+            }
+          }
+        },
+        "operationId": "RegimeController.create"
+      },
+      "patch": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regime PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "regime.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Regime>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegimePartial"
+              }
+            }
+          }
+        },
+        "operationId": "RegimeController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "RegimeController",
+        "x-operation-name": "find",
+        "tags": [
+          "RegimeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Regime model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RegimeWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/regime.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RegimeController.find"
+      }
+    },
+    "/reservation-guests/count": {
+      "get": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "count",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "ReservationGuest model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "reservation_guest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<ReservationGuest>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationByGuestController.count"
+      }
+    },
+    "/reservation-guests/{id}/guest": {
+      "get": {
+        "x-controller-name": "ReservationGuestGuestController",
+        "x-operation-name": "getGuest",
+        "tags": [
+          "ReservationGuestGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Guest belonging to ReservationGuest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Guest"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationGuestGuestController.getGuest"
+      }
+    },
+    "/reservation-guests/{id}/regime": {
+      "get": {
+        "x-controller-name": "ReservationGuestRegimeController",
+        "x-operation-name": "getRegime",
+        "tags": [
+          "ReservationGuestRegimeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Regime belonging to ReservationGuest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Regime"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationGuestRegimeController.getRegime"
+      }
+    },
+    "/reservation-guests/{id}/reservation": {
+      "get": {
+        "x-controller-name": "ReservationGuestReservationController",
+        "x-operation-name": "getReservation",
+        "tags": [
+          "ReservationGuestReservationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation belonging to ReservationGuest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reservation"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationGuestReservationController.getReservation"
+      }
+    },
+    "/reservation-guests/{id}/room": {
+      "get": {
+        "x-controller-name": "ReservationGuestRoomController",
+        "x-operation-name": "getRoom",
+        "tags": [
+          "ReservationGuestRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Room belonging to ReservationGuest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Room"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationGuestRoomController.getRoom"
+      }
+    },
+    "/reservation-guests/{id}": {
+      "put": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "ReservationGuest PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationGuest"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ReservationByGuestController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "ReservationGuest PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationGuestPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ReservationByGuestController.updateById"
+      },
+      "get": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "findById",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "ReservationGuest model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationGuestWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reservation_guest.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationByGuestController.findById"
+      },
+      "delete": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "ReservationGuest DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationByGuestController.deleteById"
+      }
+    },
+    "/reservation-guests": {
+      "post": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "create",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "ReservationGuest model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationGuest"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReservationGuest"
+              }
+            }
+          }
+        },
+        "operationId": "ReservationByGuestController.create"
+      },
+      "patch": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "ReservationGuest PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "reservation_guest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<ReservationGuest>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationGuestPartial"
+              }
+            }
+          }
+        },
+        "operationId": "ReservationByGuestController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "ReservationByGuestController",
+        "x-operation-name": "find",
+        "tags": [
+          "ReservationByGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ReservationGuest model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationGuestWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reservation_guest.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationByGuestController.find"
+      }
+    },
+    "/reservations/count": {
+      "get": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "count",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "reservation.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Reservation>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationController.count"
+      }
+    },
+    "/reservations/{id}/guest": {
+      "get": {
+        "x-controller-name": "ReservationGuestController",
+        "x-operation-name": "getGuest",
+        "tags": [
+          "ReservationGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Guest belonging to Reservation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Guest"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationGuestController.getGuest"
+      }
+    },
+    "/reservations/{id}/reservation-guests": {
+      "post": {
+        "x-controller-name": "ReservationReservationGuestController",
+        "x-operation-name": "create",
+        "tags": [
+          "ReservationReservationGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationGuest"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReservationGuestInReservation"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ReservationReservationGuestController.create"
+      },
+      "patch": {
+        "x-controller-name": "ReservationReservationGuestController",
+        "x-operation-name": "patch",
+        "tags": [
+          "ReservationReservationGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation.ReservationGuest PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "reservation_guest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<ReservationGuest>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationGuestPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ReservationReservationGuestController.patch"
+      },
+      "get": {
+        "x-controller-name": "ReservationReservationGuestController",
+        "x-operation-name": "find",
+        "tags": [
+          "ReservationReservationGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Reservation has many ReservationGuest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationGuest"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationReservationGuestController.find"
+      },
+      "delete": {
+        "x-controller-name": "ReservationReservationGuestController",
+        "x-operation-name": "delete",
+        "tags": [
+          "ReservationReservationGuestController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation.ReservationGuest DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "reservation_guest.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<ReservationGuest>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationReservationGuestController.delete"
+      }
+    },
+    "/reservations/{id}": {
+      "put": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Reservation PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reservation"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ReservationController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Reservation PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ReservationController.updateById"
+      },
+      "get": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "findById",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reservation.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationController.findById"
+      },
+      "delete": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Reservation DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ReservationController.deleteById"
+      }
+    },
+    "/reservations": {
+      "post": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "create",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Reservation"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReservation"
+              }
+            }
+          }
+        },
+        "operationId": "ReservationController.create"
+      },
+      "patch": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "reservation.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Reservation>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationPartial"
+              }
+            }
+          }
+        },
+        "operationId": "ReservationController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "ReservationController",
+        "x-operation-name": "find",
+        "tags": [
+          "ReservationController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Reservation model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reservation.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ReservationController.find"
+      }
+    },
+    "/restaurants/count": {
+      "get": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "count",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "restaurant.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Restaurant>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RestaurantController.count"
+      }
+    },
+    "/restaurants/{id}/hotel": {
+      "get": {
+        "x-controller-name": "RestaurantHotelController",
+        "x-operation-name": "getHotel",
+        "tags": [
+          "RestaurantHotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel belonging to Restaurant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hotel"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RestaurantHotelController.getHotel"
+      }
+    },
+    "/restaurants/{id}": {
+      "put": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Restaurant PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Restaurant"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RestaurantController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Restaurant PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestaurantPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RestaurantController.updateById"
+      },
+      "get": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "findById",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestaurantWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/restaurant.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RestaurantController.findById"
+      },
+      "delete": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Restaurant DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RestaurantController.deleteById"
+      }
+    },
+    "/restaurants": {
+      "post": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "create",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Restaurant"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRestaurant"
+              }
+            }
+          }
+        },
+        "operationId": "RestaurantController.create"
+      },
+      "patch": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "restaurant.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Restaurant>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestaurantPartial"
+              }
+            }
+          }
+        },
+        "operationId": "RestaurantController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "RestaurantController",
+        "x-operation-name": "find",
+        "tags": [
+          "RestaurantController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Restaurant model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RestaurantWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/restaurant.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RestaurantController.find"
+      }
+    },
+    "/room-types/count": {
+      "get": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "count",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room_type.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<RoomType>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "Room_Type.count"
+      }
+    },
+    "/room-types/{id}/rooms": {
+      "post": {
+        "x-controller-name": "RoomTypeRoomController",
+        "x-operation-name": "create",
+        "tags": [
+          "RoomTypeRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Room"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRoomInRoomType"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RoomTypeRoomController.create"
+      },
+      "patch": {
+        "x-controller-name": "RoomTypeRoomController",
+        "x-operation-name": "patch",
+        "tags": [
+          "RoomTypeRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType.Room PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Room>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RoomTypeRoomController.patch"
+      },
+      "get": {
+        "x-controller-name": "RoomTypeRoomController",
+        "x-operation-name": "find",
+        "tags": [
+          "RoomTypeRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of RoomType has many Room",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Room"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RoomTypeRoomController.find"
+      },
+      "delete": {
+        "x-controller-name": "RoomTypeRoomController",
+        "x-operation-name": "delete",
+        "tags": [
+          "RoomTypeRoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType.Room DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Room>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RoomTypeRoomController.delete"
+      }
+    },
+    "/room-types/{id}": {
+      "put": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "RoomType PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomType"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "Room_Type.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "updateById",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "RoomType PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomTypePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "Room_Type.updateById"
+      },
+      "get": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "findById",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomTypeWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/room_type.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "Room_Type.findById"
+      },
+      "delete": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "RoomType DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "Room_Type.deleteById"
+      }
+    },
+    "/room-types": {
+      "post": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "create",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomType"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRoomType"
+              }
+            }
+          }
+        },
+        "operationId": "Room_Type.create"
+      },
+      "patch": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room_type.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<RoomType>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomTypePartial"
+              }
+            }
+          }
+        },
+        "operationId": "Room_Type.updateAll"
+      },
+      "get": {
+        "x-controller-name": "Room_Type",
+        "x-operation-name": "find",
+        "tags": [
+          "Room_Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of RoomType model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoomTypeWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/room_type.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "Room_Type.find"
+      }
+    },
+    "/rooms/count": {
+      "get": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "count",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Room model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Room>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RoomController.count"
+      }
+    },
+    "/rooms/{id}/hotel": {
+      "get": {
+        "x-controller-name": "RoomHotelController",
+        "x-operation-name": "getHotel",
+        "tags": [
+          "RoomHotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel belonging to Room",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hotel"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RoomHotelController.getHotel"
+      }
+    },
+    "/rooms/{id}/room-type": {
+      "get": {
+        "x-controller-name": "RoomRoomTypeController",
+        "x-operation-name": "getRoomType",
+        "tags": [
+          "RoomRoomTypeController"
+        ],
+        "responses": {
+          "200": {
+            "description": "RoomType belonging to Room",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomType"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RoomRoomTypeController.getRoomType"
+      }
+    },
+    "/rooms/{id}": {
+      "put": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Room PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Room"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RoomController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Room PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "RoomController.updateById"
+      },
+      "get": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "findById",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Room model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/room.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RoomController.findById"
+      },
+      "delete": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Room DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "RoomController.deleteById"
+      }
+    },
+    "/rooms": {
+      "post": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "create",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Room model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Room"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRoom"
+              }
+            }
+          }
+        },
+        "operationId": "RoomController.create"
+      },
+      "patch": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Room PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "room.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Room>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomPartial"
+              }
+            }
+          }
+        },
+        "operationId": "RoomController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "RoomController",
+        "x-operation-name": "find",
+        "tags": [
+          "RoomController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Room model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RoomWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/room.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "RoomController.find"
+      }
+    },
+    "/services/count": {
+      "get": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "count",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Service model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "service.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Service>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ServiceController.count"
+      }
+    },
+    "/services/{id}/hotel": {
+      "get": {
+        "x-controller-name": "ServiceHotelController",
+        "x-operation-name": "getHotel",
+        "tags": [
+          "ServiceHotelController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Hotel belonging to Service",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hotel"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ServiceHotelController.getHotel"
+      }
+    },
+    "/services/{id}": {
+      "put": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Service PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Service"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ServiceController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Service PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ServiceController.updateById"
+      },
+      "get": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "findById",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Service model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/service.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ServiceController.findById"
+      },
+      "delete": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Service DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ServiceController.deleteById"
+      }
+    },
+    "/services": {
+      "post": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "create",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Service model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewService"
+              }
+            }
+          }
+        },
+        "operationId": "ServiceController.create"
+      },
+      "patch": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Service PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "service.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Service>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePartial"
+              }
+            }
+          }
+        },
+        "operationId": "ServiceController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "ServiceController",
+        "x-operation-name": "find",
+        "tags": [
+          "ServiceController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Service model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ServiceWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/service.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ServiceController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Service": {
+        "title": "Service",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "NewService": {
+        "title": "NewService",
+        "type": "object",
+        "description": "(tsType: Omit<Service, 'id'>, schemaOptions: { title: 'NewService', exclude: [ 'id' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Service, 'id'>"
+      },
+      "RoomTypeWithRelations": {
+        "title": "RoomTypeWithRelations",
+        "type": "object",
+        "description": "(tsType: RoomTypeWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "capacity": {
+            "type": "number"
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomWithRelations"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "capacity"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "RoomTypeWithRelations"
+      },
+      "RoomWithRelations": {
+        "title": "RoomWithRelations",
+        "type": "object",
+        "description": "(tsType: RoomWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "number": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "roomTypeId": {
+            "type": "number"
+          },
+          "hotel": {
+            "$ref": "#/components/schemas/HotelWithRelations"
+          },
+          "foreignKey": {},
+          "roomType": {
+            "$ref": "#/components/schemas/RoomTypeWithRelations"
+          }
+        },
+        "required": [
+          "number",
+          "price"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "RoomWithRelations"
+      },
+      "RestaurantWithRelations": {
+        "title": "RestaurantWithRelations",
+        "type": "object",
+        "description": "(tsType: RestaurantWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "meal_type": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "hotel": {
+            "$ref": "#/components/schemas/HotelWithRelations"
+          },
+          "foreignKey": {}
+        },
+        "required": [
+          "name",
+          "category",
+          "meal_type"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "RestaurantWithRelations"
+      },
+      "HotelWithRelations": {
+        "title": "HotelWithRelations",
+        "type": "object",
+        "description": "(tsType: HotelWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stars": {
+            "type": "number"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomWithRelations"
+            }
+          },
+          "restaurants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RestaurantWithRelations"
+            }
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceWithRelations"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "stars",
+          "address",
+          "city",
+          "country"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "HotelWithRelations"
+      },
+      "ServiceWithRelations": {
+        "title": "ServiceWithRelations",
+        "type": "object",
+        "description": "(tsType: ServiceWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "hotel": {
+            "$ref": "#/components/schemas/HotelWithRelations"
+          },
+          "foreignKey": {}
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "ServiceWithRelations"
+      },
+      "ServicePartial": {
+        "title": "ServicePartial",
+        "type": "object",
+        "description": "(tsType: Partial<Service>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Service>"
+      },
+      "Hotel": {
+        "title": "Hotel",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stars": {
+            "type": "number"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "stars",
+          "address",
+          "city",
+          "country"
+        ],
+        "additionalProperties": false
+      },
+      "RoomType": {
+        "title": "RoomType",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "capacity": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "capacity"
+        ],
+        "additionalProperties": false
+      },
+      "NewRoomType": {
+        "title": "NewRoomType",
+        "type": "object",
+        "description": "(tsType: Omit<RoomType, 'id'>, schemaOptions: { title: 'NewRoomType', exclude: [ 'id' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "capacity": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "capacity"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<RoomType, 'id'>"
+      },
+      "RoomTypePartial": {
+        "title": "RoomTypePartial",
+        "type": "object",
+        "description": "(tsType: Partial<RoomType>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "capacity": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<RoomType>"
+      },
+      "Room": {
+        "title": "Room",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "number": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "roomTypeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "number",
+          "price"
+        ],
+        "additionalProperties": false
+      },
+      "NewRoom": {
+        "title": "NewRoom",
+        "type": "object",
+        "description": "(tsType: Omit<Room, 'id'>, schemaOptions: { title: 'NewRoom', exclude: [ 'id' ] })",
+        "properties": {
+          "number": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "roomTypeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "number",
+          "price"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Room, 'id'>"
+      },
+      "RoomPartial": {
+        "title": "RoomPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Room>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "number": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "roomTypeId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Room>"
+      },
+      "NewRoomInRoomType": {
+        "title": "NewRoomInRoomType",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Room, 'id'>, 'roomTypeId'>, schemaOptions: { title: 'NewRoomInRoomType', exclude: [ 'id' ], optional: [ 'roomTypeId' ] })",
+        "properties": {
+          "number": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "roomTypeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "number",
+          "price"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Room, 'id'>, 'roomTypeId'>"
+      },
+      "Restaurant": {
+        "title": "Restaurant",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "meal_type": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "category",
+          "meal_type"
+        ],
+        "additionalProperties": false
+      },
+      "NewRestaurant": {
+        "title": "NewRestaurant",
+        "type": "object",
+        "description": "(tsType: Omit<Restaurant, 'id'>, schemaOptions: { title: 'NewRestaurant', exclude: [ 'id' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "meal_type": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "category",
+          "meal_type"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Restaurant, 'id'>"
+      },
+      "RestaurantPartial": {
+        "title": "RestaurantPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Restaurant>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "meal_type": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Restaurant>"
+      },
+      "Reservation": {
+        "title": "Reservation",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "booking_method": {
+            "type": "string"
+          },
+          "guest_count": {
+            "type": "number"
+          },
+          "credit_card": {
+            "type": "string"
+          },
+          "guest_name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "contact_phone": {
+            "type": "string"
+          },
+          "guestId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "date",
+          "booking_method",
+          "guest_count",
+          "credit_card",
+          "guest_name",
+          "address",
+          "contact_phone"
+        ],
+        "additionalProperties": false
+      },
+      "NewReservation": {
+        "title": "NewReservation",
+        "type": "object",
+        "description": "(tsType: Omit<Reservation, 'id'>, schemaOptions: { title: 'NewReservation', exclude: [ 'id' ] })",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "booking_method": {
+            "type": "string"
+          },
+          "guest_count": {
+            "type": "number"
+          },
+          "credit_card": {
+            "type": "string"
+          },
+          "guest_name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "contact_phone": {
+            "type": "string"
+          },
+          "guestId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "date",
+          "booking_method",
+          "guest_count",
+          "credit_card",
+          "guest_name",
+          "address",
+          "contact_phone"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Reservation, 'id'>"
+      },
+      "GuestWithRelations": {
+        "title": "GuestWithRelations",
+        "type": "object",
+        "description": "(tsType: GuestWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id_card": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "id_card",
+          "phone",
+          "address",
+          "country"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "GuestWithRelations"
+      },
+      "RegimeWithRelations": {
+        "title": "RegimeWithRelations",
+        "type": "object",
+        "description": "(tsType: RegimeWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "price"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "RegimeWithRelations"
+      },
+      "ReservationGuestWithRelations": {
+        "title": "ReservationGuestWithRelations",
+        "type": "object",
+        "description": "(tsType: ReservationGuestWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "check_in": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nights": {
+            "type": "number"
+          },
+          "guestId": {
+            "type": "number"
+          },
+          "reservationId": {
+            "type": "number"
+          },
+          "roomId": {
+            "type": "number"
+          },
+          "regimeId": {
+            "type": "number"
+          },
+          "guest": {
+            "$ref": "#/components/schemas/GuestWithRelations"
+          },
+          "foreignKey": {},
+          "reservation": {
+            "$ref": "#/components/schemas/ReservationWithRelations"
+          },
+          "room": {
+            "$ref": "#/components/schemas/RoomWithRelations"
+          },
+          "regime": {
+            "$ref": "#/components/schemas/RegimeWithRelations"
+          }
+        },
+        "required": [
+          "check_in",
+          "nights"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "ReservationGuestWithRelations"
+      },
+      "ReservationWithRelations": {
+        "title": "ReservationWithRelations",
+        "type": "object",
+        "description": "(tsType: ReservationWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "booking_method": {
+            "type": "string"
+          },
+          "guest_count": {
+            "type": "number"
+          },
+          "credit_card": {
+            "type": "string"
+          },
+          "guest_name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "contact_phone": {
+            "type": "string"
+          },
+          "guestId": {
+            "type": "number"
+          },
+          "guest": {
+            "$ref": "#/components/schemas/GuestWithRelations"
+          },
+          "foreignKey": {},
+          "reservationGuests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationGuestWithRelations"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "booking_method",
+          "guest_count",
+          "credit_card",
+          "guest_name",
+          "address",
+          "contact_phone"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "ReservationWithRelations"
+      },
+      "ReservationPartial": {
+        "title": "ReservationPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Reservation>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "booking_method": {
+            "type": "string"
+          },
+          "guest_count": {
+            "type": "number"
+          },
+          "credit_card": {
+            "type": "string"
+          },
+          "guest_name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "contact_phone": {
+            "type": "string"
+          },
+          "guestId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Reservation>"
+      },
+      "ReservationGuest": {
+        "title": "ReservationGuest",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "check_in": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nights": {
+            "type": "number"
+          },
+          "guestId": {
+            "type": "number"
+          },
+          "reservationId": {
+            "type": "number"
+          },
+          "roomId": {
+            "type": "number"
+          },
+          "regimeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "check_in",
+          "nights"
+        ],
+        "additionalProperties": false
+      },
+      "NewReservationGuestInReservation": {
+        "title": "NewReservationGuestInReservation",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<ReservationGuest, 'id'>, 'reservationId'>, schemaOptions: { title: 'NewReservationGuestInReservation', exclude: [ 'id' ], optional: [ 'reservationId' ] })",
+        "properties": {
+          "check_in": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nights": {
+            "type": "number"
+          },
+          "guestId": {
+            "type": "number"
+          },
+          "reservationId": {
+            "type": "number"
+          },
+          "roomId": {
+            "type": "number"
+          },
+          "regimeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "check_in",
+          "nights"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<ReservationGuest, 'id'>, 'reservationId'>"
+      },
+      "ReservationGuestPartial": {
+        "title": "ReservationGuestPartial",
+        "type": "object",
+        "description": "(tsType: Partial<ReservationGuest>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "check_in": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nights": {
+            "type": "number"
+          },
+          "guestId": {
+            "type": "number"
+          },
+          "reservationId": {
+            "type": "number"
+          },
+          "roomId": {
+            "type": "number"
+          },
+          "regimeId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<ReservationGuest>"
+      },
+      "Guest": {
+        "title": "Guest",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id_card": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "id_card",
+          "phone",
+          "address",
+          "country"
+        ],
+        "additionalProperties": false
+      },
+      "Regime": {
+        "title": "Regime",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "price"
+        ],
+        "additionalProperties": false
+      },
+      "NewReservationGuest": {
+        "title": "NewReservationGuest",
+        "type": "object",
+        "description": "(tsType: Omit<ReservationGuest, 'id'>, schemaOptions: { title: 'NewReservationGuest', exclude: [ 'id' ] })",
+        "properties": {
+          "check_in": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "nights": {
+            "type": "number"
+          },
+          "guestId": {
+            "type": "number"
+          },
+          "reservationId": {
+            "type": "number"
+          },
+          "roomId": {
+            "type": "number"
+          },
+          "regimeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "check_in",
+          "nights"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<ReservationGuest, 'id'>"
+      },
+      "NewRegime": {
+        "title": "NewRegime",
+        "type": "object",
+        "description": "(tsType: Omit<Regime, 'id'>, schemaOptions: { title: 'NewRegime', exclude: [ 'id' ] })",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "price"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Regime, 'id'>"
+      },
+      "RegimePartial": {
+        "title": "RegimePartial",
+        "type": "object",
+        "description": "(tsType: Partial<Regime>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Regime>"
+      },
+      "NewHotel": {
+        "title": "NewHotel",
+        "type": "object",
+        "description": "(tsType: Omit<Hotel, 'id'>, schemaOptions: { title: 'NewHotel', exclude: [ 'id' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "stars": {
+            "type": "number"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "stars",
+          "address",
+          "city",
+          "country"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Hotel, 'id'>"
+      },
+      "HotelPartial": {
+        "title": "HotelPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Hotel>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stars": {
+            "type": "number"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Hotel>"
+      },
+      "NewServiceInHotel": {
+        "title": "NewServiceInHotel",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Service, 'id'>, 'hotelId'>, schemaOptions: { title: 'NewServiceInHotel', exclude: [ 'id' ], optional: [ 'hotelId' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Service, 'id'>, 'hotelId'>"
+      },
+      "NewRoomInHotel": {
+        "title": "NewRoomInHotel",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Room, 'id'>, 'hotelId'>, schemaOptions: { title: 'NewRoomInHotel', exclude: [ 'id' ], optional: [ 'hotelId' ] })",
+        "properties": {
+          "number": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hotelId": {
+            "type": "number"
+          },
+          "roomTypeId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "number",
+          "price"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Room, 'id'>, 'hotelId'>"
+      },
+      "NewRestaurantInHotel": {
+        "title": "NewRestaurantInHotel",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Restaurant, 'id'>, 'hotelId'>, schemaOptions: { title: 'NewRestaurantInHotel', exclude: [ 'id' ], optional: [ 'hotelId' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "meal_type": {
+            "type": "string"
+          },
+          "hotelId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "category",
+          "meal_type"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Restaurant, 'id'>, 'hotelId'>"
+      },
+      "NewGuest": {
+        "title": "NewGuest",
+        "type": "object",
+        "description": "(tsType: Omit<Guest, 'id'>, schemaOptions: { title: 'NewGuest', exclude: [ 'id' ] })",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id_card": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "id_card",
+          "phone",
+          "address",
+          "country"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Guest, 'id'>"
+      },
+      "GuestPartial": {
+        "title": "GuestPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Guest>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id_card": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Guest>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "guest.Filter": {
+        "type": "object",
+        "title": "guest.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "id_card": {
+                    "type": "boolean"
+                  },
+                  "phone": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "country": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "id_card",
+                    "phone",
+                    "address",
+                    "country"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "guest.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Guest>"
+      },
+      "guest.Filter1": {
+        "type": "object",
+        "title": "guest.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "guest.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "id_card": {
+                    "type": "boolean"
+                  },
+                  "phone": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "country": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "id_card",
+                    "phone",
+                    "address",
+                    "country"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "guest.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Guest>"
+      },
+      "hotel.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "hotel.ScopeFilter"
+      },
+      "hotel.IncludeFilter.Items": {
+        "title": "hotel.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "rooms",
+              "restaurants",
+              "services"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/hotel.ScopeFilter"
+          }
+        }
+      },
+      "hotel.Filter": {
+        "type": "object",
+        "title": "hotel.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "stars": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "city": {
+                    "type": "boolean"
+                  },
+                  "country": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "stars",
+                    "address",
+                    "city",
+                    "country"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "hotel.Fields"
+          },
+          "include": {
+            "title": "hotel.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/hotel.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Hotel>"
+      },
+      "hotel.Filter1": {
+        "type": "object",
+        "title": "hotel.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "hotel.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "stars": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "city": {
+                    "type": "boolean"
+                  },
+                  "country": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "stars",
+                    "address",
+                    "city",
+                    "country"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "hotel.Fields"
+          },
+          "include": {
+            "title": "hotel.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/hotel.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Hotel>"
+      },
+      "regime.Filter": {
+        "type": "object",
+        "title": "regime.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "boolean"
+                  },
+                  "price": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "type",
+                    "price"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "regime.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Regime>"
+      },
+      "regime.Filter1": {
+        "type": "object",
+        "title": "regime.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "regime.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "type": "boolean"
+                  },
+                  "price": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "type",
+                    "price"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "regime.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Regime>"
+      },
+      "reservation_guest.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "reservation_guest.ScopeFilter"
+      },
+      "reservation_guest.IncludeFilter.Items": {
+        "title": "reservation_guest.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "guest",
+              "reservation",
+              "room",
+              "regime"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/reservation_guest.ScopeFilter"
+          }
+        }
+      },
+      "reservation_guest.Filter": {
+        "type": "object",
+        "title": "reservation_guest.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "check_in": {
+                    "type": "boolean"
+                  },
+                  "nights": {
+                    "type": "boolean"
+                  },
+                  "guestId": {
+                    "type": "boolean"
+                  },
+                  "reservationId": {
+                    "type": "boolean"
+                  },
+                  "roomId": {
+                    "type": "boolean"
+                  },
+                  "regimeId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "check_in",
+                    "nights",
+                    "guestId",
+                    "reservationId",
+                    "roomId",
+                    "regimeId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "reservation_guest.Fields"
+          },
+          "include": {
+            "title": "reservation_guest.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/reservation_guest.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<ReservationGuest>"
+      },
+      "reservation_guest.Filter1": {
+        "type": "object",
+        "title": "reservation_guest.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "reservation_guest.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "check_in": {
+                    "type": "boolean"
+                  },
+                  "nights": {
+                    "type": "boolean"
+                  },
+                  "guestId": {
+                    "type": "boolean"
+                  },
+                  "reservationId": {
+                    "type": "boolean"
+                  },
+                  "roomId": {
+                    "type": "boolean"
+                  },
+                  "regimeId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "check_in",
+                    "nights",
+                    "guestId",
+                    "reservationId",
+                    "roomId",
+                    "regimeId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "reservation_guest.Fields"
+          },
+          "include": {
+            "title": "reservation_guest.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/reservation_guest.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<ReservationGuest>"
+      },
+      "reservation.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "reservation.ScopeFilter"
+      },
+      "reservation.IncludeFilter.Items": {
+        "title": "reservation.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "guest",
+              "reservationGuests"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/reservation.ScopeFilter"
+          }
+        }
+      },
+      "reservation.Filter": {
+        "type": "object",
+        "title": "reservation.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "date": {
+                    "type": "boolean"
+                  },
+                  "booking_method": {
+                    "type": "boolean"
+                  },
+                  "guest_count": {
+                    "type": "boolean"
+                  },
+                  "credit_card": {
+                    "type": "boolean"
+                  },
+                  "guest_name": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "contact_phone": {
+                    "type": "boolean"
+                  },
+                  "guestId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "date",
+                    "booking_method",
+                    "guest_count",
+                    "credit_card",
+                    "guest_name",
+                    "address",
+                    "contact_phone",
+                    "guestId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "reservation.Fields"
+          },
+          "include": {
+            "title": "reservation.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/reservation.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Reservation>"
+      },
+      "reservation.Filter1": {
+        "type": "object",
+        "title": "reservation.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "reservation.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "date": {
+                    "type": "boolean"
+                  },
+                  "booking_method": {
+                    "type": "boolean"
+                  },
+                  "guest_count": {
+                    "type": "boolean"
+                  },
+                  "credit_card": {
+                    "type": "boolean"
+                  },
+                  "guest_name": {
+                    "type": "boolean"
+                  },
+                  "address": {
+                    "type": "boolean"
+                  },
+                  "contact_phone": {
+                    "type": "boolean"
+                  },
+                  "guestId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "date",
+                    "booking_method",
+                    "guest_count",
+                    "credit_card",
+                    "guest_name",
+                    "address",
+                    "contact_phone",
+                    "guestId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "reservation.Fields"
+          },
+          "include": {
+            "title": "reservation.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/reservation.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Reservation>"
+      },
+      "restaurant.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "restaurant.ScopeFilter"
+      },
+      "restaurant.IncludeFilter.Items": {
+        "title": "restaurant.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "hotel"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/restaurant.ScopeFilter"
+          }
+        }
+      },
+      "restaurant.Filter": {
+        "type": "object",
+        "title": "restaurant.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "meal_type": {
+                    "type": "boolean"
+                  },
+                  "hotelId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "category",
+                    "meal_type",
+                    "hotelId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "restaurant.Fields"
+          },
+          "include": {
+            "title": "restaurant.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/restaurant.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Restaurant>"
+      },
+      "restaurant.Filter1": {
+        "type": "object",
+        "title": "restaurant.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "restaurant.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "category": {
+                    "type": "boolean"
+                  },
+                  "meal_type": {
+                    "type": "boolean"
+                  },
+                  "hotelId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "category",
+                    "meal_type",
+                    "hotelId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "restaurant.Fields"
+          },
+          "include": {
+            "title": "restaurant.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/restaurant.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Restaurant>"
+      },
+      "room_type.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "room_type.ScopeFilter"
+      },
+      "room_type.IncludeFilter.Items": {
+        "title": "room_type.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "rooms"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/room_type.ScopeFilter"
+          }
+        }
+      },
+      "room_type.Filter": {
+        "type": "object",
+        "title": "room_type.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "boolean"
+                  },
+                  "capacity": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "description",
+                    "capacity"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "room_type.Fields"
+          },
+          "include": {
+            "title": "room_type.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/room_type.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<RoomType>"
+      },
+      "room_type.Filter1": {
+        "type": "object",
+        "title": "room_type.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "room_type.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "boolean"
+                  },
+                  "capacity": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "description",
+                    "capacity"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "room_type.Fields"
+          },
+          "include": {
+            "title": "room_type.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/room_type.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<RoomType>"
+      },
+      "room.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "room.ScopeFilter"
+      },
+      "room.IncludeFilter.Items": {
+        "title": "room.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "hotel",
+              "roomType"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/room.ScopeFilter"
+          }
+        }
+      },
+      "room.Filter": {
+        "type": "object",
+        "title": "room.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "number": {
+                    "type": "boolean"
+                  },
+                  "price": {
+                    "type": "boolean"
+                  },
+                  "hotelId": {
+                    "type": "boolean"
+                  },
+                  "roomTypeId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "number",
+                    "price",
+                    "hotelId",
+                    "roomTypeId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "room.Fields"
+          },
+          "include": {
+            "title": "room.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/room.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Room>"
+      },
+      "room.Filter1": {
+        "type": "object",
+        "title": "room.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "room.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "number": {
+                    "type": "boolean"
+                  },
+                  "price": {
+                    "type": "boolean"
+                  },
+                  "hotelId": {
+                    "type": "boolean"
+                  },
+                  "roomTypeId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "number",
+                    "price",
+                    "hotelId",
+                    "roomTypeId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "room.Fields"
+          },
+          "include": {
+            "title": "room.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/room.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Room>"
+      },
+      "service.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "service.ScopeFilter"
+      },
+      "service.IncludeFilter.Items": {
+        "title": "service.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string",
+            "enum": [
+              "hotel"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/service.ScopeFilter"
+          }
+        }
+      },
+      "service.Filter": {
+        "type": "object",
+        "title": "service.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "hotelId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "hotelId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "service.Fields"
+          },
+          "include": {
+            "title": "service.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/service.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Service>"
+      },
+      "service.Filter1": {
+        "type": "object",
+        "title": "service.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "service.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "hotelId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "name",
+                    "hotelId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "service.Fields"
+          },
+          "include": {
+            "title": "service.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/service.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Service>"
+      }
+    }
+  }
+}

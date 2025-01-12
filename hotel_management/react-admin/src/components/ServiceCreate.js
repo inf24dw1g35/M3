@@ -4,7 +4,7 @@ import { Create, SimpleForm, TextInput, NumberInput } from 'react-admin';  // Im
 export const ServiceCreate = (props) => (
   <Create title="Create a Service" {...props}>  {/* Título para a criação do serviço */}
     <SimpleForm>
-      <NumberInput source="hotel_id" label="Hotel ID" />  {/* Campo para ID do hotel ao qual o serviço pertence */}
+      <NumberInput source="hotelId" label="Hotel ID" />  {/* Campo para ID do hotel ao qual o serviço pertence */}
       <TextInput source="name" label="Service Name" />  {/* Campo para nome do serviço */}
     </SimpleForm>
   </Create>
