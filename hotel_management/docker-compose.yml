@@ -24,7 +24,7 @@ services:
     container_name: m3_node-app
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.node
     depends_on:
       mysql:
         condition: service_healthy
