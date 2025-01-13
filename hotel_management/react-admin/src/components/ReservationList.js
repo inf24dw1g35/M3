@@ -11,7 +11,7 @@ export const ReservationList = () => (
             <TextField source="guest_name" />
             <TextField source="address" />
             <TextField source="contact_phone" />
-            <ReferenceField source="guestId" reference="guests" />
+            <NumberField source="guestId" reference="guests" />
         </Datagrid>
     </List>
 );

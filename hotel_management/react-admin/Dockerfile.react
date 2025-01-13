@@ -1,23 +1,32 @@
-# Use uma imagem base do Node.js
-FROM node:18-alpine
+# Use uma imagem base do Node.js para construir a aplicação
+FROM node:18-alpine AS build
 
-# Instalar dependências do sistema necessárias (opcional, mas recomendado)
-RUN apk add --no-cache bash curl
-
-# Diretório de trabalho no container
+# Diretório de trabalho para o build
 WORKDIR /app
 
-# Copiar apenas os arquivos de dependências
+# Copiar dependências
 COPY package*.json ./
 
-# Instalar as dependências
+# Instalar dependências
 RUN npm install
 
-# Copiar o restante do código do react-admin
+# Copiar o restante do código-fonte
 COPY . .
 
-# Expor a porta usada pelo React
-EXPOSE 3000
+# Construir a aplicação React para produção
+RUN npm run build
 
-# Comando para iniciar o React
-CMD ["npm", "start"]
+# Use uma imagem base de servidor para servir a aplicação
+FROM nginx:alpine
+
+# Remover configuração padrão do Nginx
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copiar arquivos de build para o diretório padrão do Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Expor a porta usada pelo Nginx
+EXPOSE 80
+
+# Iniciar o servidor Nginx
+CMD ["nginx", "-g", "daemon off;"]

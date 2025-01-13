@@ -57,15 +57,7 @@ services:
       node:
         condition: service_healthy
     ports:
-      - "3001:3001"
-    working_dir: /app
-    volumes:
-      - ./react-admin:/app
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-      NODE_ENV: "development"
-      HOST: 0.0.0.0
-      PORT: 3001
-    command: ["npm", "start"]
+      - "3001:80" # Mapeia a porta 80 do container para a porta 8080 na máquina host
+    restart: always # Reinicia automaticamente o container em caso de falha
 
   

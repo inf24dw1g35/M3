@@ -7,10 +7,10 @@ export const HotelList = () => (
         <Datagrid>
             <TextField source="id" label="ID" />
             <TextField source="name" label="Name" />
-            <StarField source="stars" label="Stars" />
+            <TextField source="stars" label="Stars" />
             <TextField source="address" label="Address" />
             <TextField source="city" label="City" />
-            <FlagField source="country" label="Country" /> {/* Certifique-se que country é passado */}
+            <TextField source="country" label="Country" /> {/* Certifique-se que country é passado */}
         </Datagrid>
     </List>
 );
