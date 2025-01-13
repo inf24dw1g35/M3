@@ -4,9 +4,9 @@
 # **Desenvolvimento Web 1**
 ## Apresentação do projeto
 
-O Grupo 35 para o M3, escolheu utilizar uma Base de Dados que foi criada no 1º ano para a cadeira de Base de Dados. É uma Base de Dados para utilização numa cadeia de Hotéis, com 9 tabelas. Para o trabalho, foi desevolvida uma API com 5 recursos e utilizados métodos HTTP, para obter, editar, adicionar e eliminar dados (GET, PUT, POST e DELETE). Este trabalho permite-nos desenvolver habilidades práticas em desenvolvimento web e trabalho em grupo.
+O Grupo 35 para o M3, escolheu utilizar uma Base de Dados que foi criada no 1º ano para a cadeira de Base de Dados. É uma Base de Dados para utilização numa cadeia de Hotéis, com 9 tabelas. Para o trabalho, foi desevolvida uma API com 5 recursos e utilizados métodos HTTP, para obter, editar, adicionar e eliminar dados (GET, PUT, POST e DELETE). Este trabalho permite-nos desenvolver habilidades práticas em desenvolvimento web, nomeadamente em Loppback4 e React-Admin.
 
-### Métodos HTTP utilizados na API
+### Alguns métodos HTTP utilizados na API
 
 A API criada para este projeto utiliza os seguintes métodos HTTP para interagir com os recursos:
 
@@ -40,6 +40,10 @@ Esses métodos foram usados para a interação com os seguintes recursos da API:
 - **Hóspedes**: Adicionar, editar, listar e remover hóspedes.
 - **Reservas**: Gerenciar reservas de hotéis.
 - **Quartos**: Gerenciar os quartos dos hotéis, incluindo disponibilidade e preços.
+- **Restaurantees**: Gerenciar os restaurantes dos hotéis.
+- **Tipos de Quartos**: Gerenciar os tipos de quartos dos hotéis.
+- **Regimes**: Gerenciar os regimes ddisponiveis para reserva.
+- **Serviços**: Gerenciar os serviços disponiveis nos hotéis.
 
 ---
 
@@ -53,18 +57,17 @@ Esses métodos foram usados para a interação com os seguintes recursos da API:
 
 ## Organização do repositório
 O repositório está organizado da seguinte forma:
-- **pasta OpenAPI** - Contém os OpenAPI que foram elaborados no Swagger
-- **pasta docs** - Contém relatório entregue no inicio do trabalho, onde consta o tema do trabalho
-- **pasta mysql** - Contém o ficheiro init.sql e data.sql, onde está toda a estrutura da base de dados
-- **pasta nodejs** - Contém o ficheiro nodejs-server, com o ficheiro dockfile, compose.yaml
-- **pasta Postman**: Arquivo com a Collection do Postman para testar os endpoints da API.
+- **pasta Docs** - Contém relatório entregue no inicio do trabalho, onde consta o tema do trabalho
+- **pasta Hotel_management** - Contém ficheiros LoopBack, Base Dados, React-Admin, respectivos dockerfile, docker-compose
+- **pasta PostmanCollection**: Arquivo com a Collection do Postman para testar os endpoints da API.
 
 ---
 
 ## Link's dos repositórios do Docker Hub
 
-- **mysql** - docker pull inf24dw1g32/mysql:1.0
-- **nodejs** - docker pull inf24dw1g32/node:1.0
+- **mysql** - docker pull inf24dw1g32/mysql:2.0
+- **nodejs** - docker pull inf24dw1g32/node:2.0
+- **react** - docker pull inf24dw1g32/react:1.0
 
 ## Elementos do Grupo
 - António Manuel Ferreira Lopes dos Santos Filipe - nº 044351 @AmFilipe
